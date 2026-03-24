@@ -50,6 +50,12 @@ public class GameEngine {
 		}
 	}
 
+	/**
+	 * Attempts to move the player.
+	 * 
+	 * @param dRow Change in row (-1, 0, 1)
+	 * @param dCol Change in column (-1, 0, 1)
+	 */
 
 	public boolean movePlayer(int dRow, int dCol) {
 		int targetRow = playerRow + dRow;
@@ -69,6 +75,11 @@ public class GameEngine {
 		} else {
 			board.setCell(playerRow, playerCol, FLOOR);
 		}
+		
+		// 4. Move the Player
+		// Current position becomes Floor (or Goal if player was standing on one)
+		// Note: For simplicity, this engine assumes player replaces the cell.
+		// If you want "Player on Goal", you'd add a 6th constant.
 
 		playerRow = targetRow;
 		playerCol = targetCol;
@@ -78,16 +89,18 @@ public class GameEngine {
 
 		return true;
 	}
-  
+
+	// defines the getter for the step count
 	public int getSteps() {
 		return board.stepCounter.getSteps();
 	}
 
-	
+	// defines the method for checking how many coins are collected
 	public int getCoinsCollected() {
 		return coinsCollected;
 	}
 
+	// defines the method to retrieve the current score
 	public int getScore() {
 		return getSteps() * -1 + coinsCollected * 5;
 	}
