@@ -10,8 +10,13 @@ public class Board implements Cloneable {
 		this.grid = new Integer[ROWS][COLUMNS];
 	}
 
+
 	public void setStepCounter() {
 		stepCounter = new StepCounter();
+	}
+
+	public StepCounter getStepCounter() {
+   		return stepCounter;
 	}
 
 	// Define the value of a particular cell
